@@ -1,0 +1,8 @@
+{
+    "Slack" : {
+        "client_secret": "d127d875b18e6c9096b4e3f4643244b8",
+        "signing_secret": "916ef01d1755ac44174db61b234cb075",
+        "verification_token": "khNNTWZvD7BIIhSw8VuMpQXf",
+        "token": "xoxp-757299176212-746297879891-758800610080-f6118a1d7a33d2e640a08ca3d371a007"
+    }
+}

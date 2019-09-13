@@ -1,0 +1,54 @@
+.App {
+  background-color: #222;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1 {
+  font-size: 54px;
+  line-height: 1em;
+  margin:24px 0;
+  
+}
+
+h2 {
+  font-size: 36px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px auto;
+  max-width: 600px;
+  transition: all 0.5s;
+}
+button {
+  border: 0;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  border-radius: 0.25em;
+  border:2px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+button:hover {
+  opacity: 0.75;
+}
+button.primary {
+  background-color: rgb(128, 32, 32);
+  color: white;
+}
+
+button.secondary {
+  background-color: rgb(134, 194, 75);
+  color: #222;
+}
