@@ -1,4 +1,4 @@
-class User {
+class UserModel {
   constructor(name = 'dude', username = 'nickstester', id = 1) {
    this.name = name;
    this.username = username;
@@ -6,6 +6,7 @@ class User {
    this.primaryAccount = '';
    this.accounts = [];
    this.primaryInfo = {};
+   this.email = '';
   }
   /***
    * @Function pushes a new account to the array of accounts
@@ -58,4 +59,4 @@ class User {
 
 }
 
-export default User;
+export default UserModel;

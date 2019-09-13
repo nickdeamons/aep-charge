@@ -4,46 +4,41 @@ import Zapchat from './components/Zapchat/index.js';
 import axios from 'axios';
 // import oauth from 'axios-oauth-client';
 
-import './App.css';
 import config from './appConfig.json';
 
-/*
-const getUserInfo = oauth.client(axios.create(), {
-  url: 'https://slack.com/api/users.list',
-  grant_type: 'password',
-  client_id: 'zapchat',
-  client_secret: config.client_secret,
-  signing_secret: config.signing_secret,
-  verification_token: config.verification_token,
-  token: config.token
-}); */
- 
-// const auth = await getOwnerCredentials(); 
-
+import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
 
-  componentDidMount() {
-    /*async function test() {
-      //const auth = await getUserInfo()
-      //console.log(auth)
+    this.state = {
+      authizations: [],
+      errors: [],
+      currentUser: {},
+      users: [],
     }
-    test();*/
-    axios.get('https://slack.com/api/users.list?token='+config.Slack.token, {
-      
-    }).then((response) => {
-      console.log(response);
-    }).catch((error) => {
-      console.log(error);
-    })
+
+    this.getData = this.getData.bind(this);
   }
 
+  async getData() {
+    // console.log('get data');
+    console.log('getData called');
+    const result = await axios.get('https://slack.com/api/users.list?token='+config.Slack.token)
+    
+    this.setState({ users: result.data.members });  
+    console.log(result.data.members.length, this.state.users.length);
+  }
 
   render() {
     return (
       <div className="App">
         <h1>Zapchat</h1>
-        <Zapchat />
+        <button onClick={this.getData}>Populate Users Models</button>
+        {this.state.users.length > 0 && 
+          <Zapchat users={this.state.users} />
+        }
       </div>
     );
   }

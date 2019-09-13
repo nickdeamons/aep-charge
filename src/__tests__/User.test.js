@@ -1,11 +1,24 @@
-import User from '../models/User';
+import UserModel from '../models/User';
 
-const UserTest = new User();
+import React from 'react';
+import ReactDOM from 'react-dom';
+import User from '../components/Zapchat/User';
+import {mount} from 'enzyme';
+
+const UserTest = new UserModel();
 
 import SlackDetails from '../models/Account/Slack/example.json';
 import SlackAccount from '../models/Account/Slack';
 
 describe('User', () => {
+
+  let user, userInstance;
+  beforeEach(() => {
+    user = mount(<User data={SlackDetails.user} />)
+    // create state reference
+    userInstance = user.instance();
+  })
+
   // describe our default User model on instantiation
   it('Has defaults: dude, nickstester, 1, and no accounts', () => {
     expect(UserTest.username).toEqual('nickstester');
@@ -29,4 +42,11 @@ describe('User', () => {
     UserTest.deleteAccountFromUser('Slack');
     expect(UserTest.accounts.length).toEqual(0);
   })
+
+  describe('User Component', () => {
+    it('has correct user name', () => {
+      expect(user.find('#userName').text()).toEqual(SlackDetails.user.name);
+    })
+  });
+
 });
