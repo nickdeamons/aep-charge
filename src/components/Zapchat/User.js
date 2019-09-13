@@ -9,12 +9,14 @@ class User extends React.Component {
         super(props)
 
         const user = new UserModel(props.data.name);
-
+        // assume we're getting slack on first initialization        
         user.addNewAccount(new AccountModel('Slack', props.data))
+        // again, assuming first pass is slack
         user.setPrimaryAccount('Slack');
 
         this.state = {
-            user: user
+            user: user,
+            authorizations: []
         }
     }
 

@@ -1,4 +1,11 @@
 class UserModel {
+
+  /**
+      * This is to explain the intent of this state object models
+      * @property {Object} primaryInfo
+      * Store a quick-access object that is the primary account, taken from the accounts array of account object models
+     */
+
   constructor(name = 'dude', username = 'nickstester', id = 1) {
    this.name = name;
    this.username = username;
@@ -7,6 +14,8 @@ class UserModel {
    this.accounts = [];
    this.primaryInfo = {};
    this.email = '';
+
+   console.log(this)
   }
   /***
    * @Function pushes a new account to the array of accounts

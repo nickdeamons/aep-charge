@@ -12,8 +12,13 @@ class App extends Component {
   constructor() {
     super();
 
+    /**
+      * This is to explain the intent of this state object
+      * @property {Array} authorizations
+      * Store authorizations this user has for acc
+     */
+
     this.state = {
-      authizations: [],
       errors: [],
       currentUser: {},
       users: [],
@@ -23,12 +28,10 @@ class App extends Component {
   }
 
   async getData() {
-    // console.log('get data');
-    console.log('getData called');
+    // make the slack API call (requires a JEST mock)
     const result = await axios.get('https://slack.com/api/users.list?token='+config.Slack.token)
-    
+    // set the state to match the result set
     this.setState({ users: result.data.members });  
-    console.log(result.data.members.length, this.state.users.length);
   }
 
   render() {
